@@ -1,0 +1,32 @@
+
+<div class="col-md-12">
+    <h3 style="text-align:center;">{{ title }}</h3>
+
+    <div class="identity-alert alert alert-success" *ngIf="identity && identity.sub">
+        Te has identificado corectamente {{ identity.email }}
+    </div>
+
+    <div class="identity-alert alert alert-danger" *ngIf="identity && identity.data">
+        Error! Usuario o contraseña incorrectos.
+    </div>
+    
+
+    <!-- login form -->
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-6 col-md-offset-3 no-padding">
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email" id="email" required
+                #email="ngModel" [(ngModel)]="user.email"
+            />
+            <span *ngIf="!email.valid && email.touched">The email is invalid!</span>
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" name="password" id="password" 
+                required #password="ngModel" [(ngModel)]="user.password"
+            />
+            <span *ngIf="!password.valid && password.touched">The password is invalid!</span>
+        </div>
+        <input type="submit" class="btn btn-primary btn-block" [disabled]="!loginForm.valid" value="Entrar">
+    </form>
+</div>   

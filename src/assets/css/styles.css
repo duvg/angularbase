@@ -1,0 +1,12 @@
+#logo{
+    text-align: left;
+    display: inline-block
+}
+
+#header
+{
+    margin-top: 15px;
+}
+.no-padding{
+    padding-left: 0;
+}
